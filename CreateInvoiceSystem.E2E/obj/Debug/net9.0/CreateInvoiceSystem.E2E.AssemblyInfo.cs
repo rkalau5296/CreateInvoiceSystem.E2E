@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CreateInvoiceSystem.E2E")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ac0726fa4feaac6afa88dd57ad46e416f990089")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+010e0f1cc9b2de6b47db661e1821dc009eccb690")]
 [assembly: System.Reflection.AssemblyProductAttribute("CreateInvoiceSystem.E2E")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CreateInvoiceSystem.E2E")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

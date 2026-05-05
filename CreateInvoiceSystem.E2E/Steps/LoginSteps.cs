@@ -34,5 +34,41 @@ namespace CreateInvoiceSystem.E2E.Steps
         {
             (await _dashboardPage.IsLoadedAsync()).Should().BeTrue();
         }
+        [When(@"I toggle the Remember Me checkbox")]
+        public async Task WhenIToggleTheRememberMeCheckbox()
+        {
+            await _loginPage.ToggleRememberMeAsync();
+        }
+
+        [Then(@"the Remember Me checkbox state should change")]
+        public async Task ThenTheRememberMeCheckboxStateShouldChange()
+        {
+            (await _loginPage.WasRememberMeToggledAsync()).Should().BeTrue();
+        }
+
+        [When(@"I click the Forgot Password link")]
+        public async Task WhenIClickTheForgotPasswordLink()
+        {
+            await _loginPage.ClickForgotPasswordAsync();
+        }
+
+        [Then(@"I should be redirected to the forgot password page")]
+        public async Task ThenIShouldBeRedirectedToTheForgotPasswordPage()
+        {
+            (await _loginPage.IsForgotPasswordPageAsync()).Should().BeTrue();
+        }
+
+        [When(@"I click the Register link")]
+        public async Task WhenIClickTheRegisterLink()
+        {
+            await _loginPage.ClickRegisterAsync();
+        }
+
+        [Then(@"I should be redirected to the register page")]
+        public async Task ThenIShouldBeRedirectedToTheRegisterPage()
+        {
+            (await _loginPage.IsRegisterPageAsync()).Should().BeTrue();
+        }
+
     }
 }
