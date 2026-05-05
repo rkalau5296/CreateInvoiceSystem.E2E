@@ -72,9 +72,33 @@ namespace CreateInvoiceSystem.E2E.Pages
             var text = await SuccessMessage.InnerTextAsync();
             return text.Contains("Jeśli podany adres e-mail znajduje się w naszej bazie, wysłaliśmy na niego instrukcję resetowania hasła. Prosimy o sprawdzenie skrzynki e-mail (oraz folderu Spam).");
         }
-
-        public async Task<bool> IsSuccessMessageVisibleAsync() => await SuccessMessage.IsVisibleAsync();
+        
         public async Task<bool> IsGoToLoginButtonVisibleAsync() => await GoToLoginButton.IsVisibleAsync();
+
+        public async Task ClickSendResetLinkAsync()
+        {
+            await _page.ClickAsync("button[type='submit']");
+        }
+
+        public async Task<bool> IsEmailFieldInvalidAsync()
+        {
+            var input = await _page.QuerySelectorAsync("input.form-control");
+            var className = await input.GetAttributeAsync("class");
+            return className.Contains("is-invalid");
+        }
+
+        public async Task<string> GetEmailFieldErrorMessageAsync()
+        {
+            var error = await _page.QuerySelectorAsync(".text-danger.small");
+            return (await error.InnerTextAsync()).Trim();
+        }
+
+        public async Task<string> GetGlobalValidationAlertAsync()
+        {
+            var alert = await _page.QuerySelectorAsync(".alert.alert-danger");
+            return (await alert.InnerTextAsync()).Trim();
+        }
+
     }
 
 }

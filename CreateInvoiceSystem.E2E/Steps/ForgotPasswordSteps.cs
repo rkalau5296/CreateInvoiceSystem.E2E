@@ -111,5 +111,29 @@ namespace CreateInvoiceSystem.E2E.Steps
         {
             await _forgotPasswordPage.GoToLoginButton.ClickAsync();
         }
+
+        [When(@"I click the Send Reset Link button without entering an email")]
+        public async Task WhenIClickTheSendResetLinkButtonWithoutEnteringAnEmail()
+        {
+            await _forgotPasswordPage.ClickSendResetLinkAsync();
+        }
+
+        [Then(@"the email field should show a required validation message")]
+        public async Task ThenTheEmailFieldShouldShowARequiredValidationMessage()
+        {
+            var isInvalid = await _forgotPasswordPage.IsEmailFieldInvalidAsync();
+            isInvalid.Should().BeTrue("the email input should have the 'is-invalid' class");
+
+            var message = await _forgotPasswordPage.GetEmailFieldErrorMessageAsync();
+            message.Should().Be("Podaj adres e-mail");
+        }
+
+        [Then(@"a global validation alert should be displayed")]
+        public async Task ThenAGlobalValidationAlertShouldBeDisplayed()
+        {
+            var alert = await _forgotPasswordPage.GetGlobalValidationAlertAsync();
+            alert.Should().Contain("Uzupełnij wymagane pola.");
+        }
+
     }
 }
