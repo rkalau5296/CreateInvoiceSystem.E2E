@@ -1,5 +1,6 @@
 ﻿using CreateInvoiceSystem.E2E.Pages;
 using FluentAssertions;
+using Microsoft.Playwright;
 using TechTalk.SpecFlow;
 
 namespace CreateInvoiceSystem.E2E.Steps
@@ -47,6 +48,42 @@ namespace CreateInvoiceSystem.E2E.Steps
         {
             var visible = await _dashboardPage.LatestClients.IsVisibleAsync();
             visible.Should().BeTrue("the latest clients section should be visible");
+        }
+
+        [When(@"I click the '(.*)' quick action")]
+        public async Task WhenIClickTheQuickAction(string actionName)
+        {
+            switch (actionName)
+            {
+                case "Wystaw fakture":
+                    await _dashboardPage.ClickWystawFakture();
+                    break;
+
+                case "Przegladaj faktury":
+                    await _dashboardPage.ClickPrzegladajFaktury();
+                    break;
+
+                case "Kontrahenci":
+                    await _dashboardPage.ClickKontrahenci();
+                    break;
+
+                default:
+                    throw new ArgumentException($"Unknown quick action: {actionName}");
+            }
+        }
+
+        [Then(@"I should be on the '(.*)' page")]
+        public async Task ThenIShouldBeOnThePage(string pageName)
+        {
+            string expectedUrl = pageName switch
+            {
+                "invoice create" => "/invoices/create",
+                "invoice list" => "/invoices",
+                "clients" => "/clients",
+                _ => throw new ArgumentException($"Unknown page: {pageName}")
+            };
+
+            await Assertions.Expect(_dashboardPage.Page).ToHaveURLAsync(new Regex(expectedUrl));
         }
     }
 }
