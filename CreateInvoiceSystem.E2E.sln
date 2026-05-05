@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37216.2 d17.14
+VisualStudioVersion = 17.14.37216.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateInvoiceSystem.E2E", "CreateInvoiceSystem.E2E\CreateInvoiceSystem.E2E.csproj", "{51DE1C70-07B7-4B0E-B47D-81F285F6EBA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateInvoiceSystem.E2E", "CreateInvoiceSystem.E2E.csproj", "{38698313-9F40-03D7-D338-D1BE83AE7BFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{51DE1C70-07B7-4B0E-B47D-81F285F6EBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51DE1C70-07B7-4B0E-B47D-81F285F6EBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51DE1C70-07B7-4B0E-B47D-81F285F6EBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51DE1C70-07B7-4B0E-B47D-81F285F6EBA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38698313-9F40-03D7-D338-D1BE83AE7BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38698313-9F40-03D7-D338-D1BE83AE7BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38698313-9F40-03D7-D338-D1BE83AE7BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38698313-9F40-03D7-D338-D1BE83AE7BFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
