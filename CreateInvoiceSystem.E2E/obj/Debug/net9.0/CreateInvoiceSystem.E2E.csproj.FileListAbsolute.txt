@@ -644,3 +644,4 @@ C:\Users\rafal\source\repos\CreateInvoiceSystem.E2E\CreateInvoiceSystem.E2E\obj\
 C:\Users\rafal\source\repos\CreateInvoiceSystem.E2E\CreateInvoiceSystem.E2E\obj\Debug\net9.0\CreateInvoiceSystem.E2E.pdb
 C:\Users\rafal\source\repos\CreateInvoiceSystem.E2E\CreateInvoiceSystem.E2E\obj\Debug\net9.0\CreateInvoiceSystem.E2E.genruntimeconfig.cache
 C:\Users\rafal\source\repos\CreateInvoiceSystem.E2E\CreateInvoiceSystem.E2E\obj\Debug\net9.0\ref\CreateInvoiceSystem.E2E.dll
+C:\Users\rafal\source\repos\CreateInvoiceSystem.E2E\CreateInvoiceSystem.E2E\obj\Debug\net9.0\CreateInvoiceSystem.E2E.sourcelink.json
