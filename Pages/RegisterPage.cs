@@ -54,7 +54,7 @@ namespace CreateInvoiceSystem.E2E.Pages
 
         public async Task ClickBackToLoginAsync()
         {
-            await _page.ClickAsync("a[href='/']");
+            await _page.ClickAsync("a[href='/login']");
         }
 
         public async Task<string> CurrentUrl()

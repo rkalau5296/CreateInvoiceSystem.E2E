@@ -194,7 +194,7 @@ namespace CreateInvoiceSystem.E2E.Steps
         public async Task ThenIShouldBeOnTheLoginPage()
         {
             var url = await _page.CurrentUrl();
-            url.Should().NotContain("/login");
+            url.Should().Contain("/login");
         }
     }
 }
