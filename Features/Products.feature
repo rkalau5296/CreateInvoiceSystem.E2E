@@ -62,6 +62,7 @@ Scenario: Delete product successfully
     And I fill the description with 'Opis testowy'
     And I fill the price with '123.45'
     And I submit the add product form
+    When I search for dynamic product name
     Then the products table should contain dynamic product name
     When I delete the product with dynamic product name
     Then the products table should not contain dynamic product name
@@ -76,4 +77,5 @@ Scenario: Add product successfully
     And I fill the price with '123.45'
     And I submit the add product form
     Then the add product modal should close
-    And the products table should contain dynamic product name
+    When I search for dynamic product name
+    Then the products table should contain dynamic product name

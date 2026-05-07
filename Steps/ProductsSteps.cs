@@ -55,6 +55,8 @@ namespace CreateInvoiceSystem.E2E.Steps
         [Then(@"each product row should have Edit and Delete buttons")]
         public async Task ThenEachProductRowShouldHaveEditAndDeleteButtons()
         {
+            await _productsPage.EditButtons.First.WaitForAsync(new() { Timeout = 5000 });
+
             (await _productsPage.EditButtons.CountAsync()).Should().BeGreaterThan(0);
             (await _productsPage.DeleteButtons.CountAsync()).Should().BeGreaterThan(0);
         }
@@ -75,7 +77,7 @@ namespace CreateInvoiceSystem.E2E.Steps
                 var name = await row.Locator("td strong").InnerTextAsync();
                 name.Should().Contain(text);
             }
-        }        
+        }
 
         [When(@"I click the add product button")]
         public async Task WhenIClickTheAddProductButton()
@@ -117,7 +119,7 @@ namespace CreateInvoiceSystem.E2E.Steps
         public async Task ThenThePriceValidationMessageShouldBeVisible()
         {
             (await _productsPage.PriceValidation.IsVisibleAsync()).Should().BeTrue();
-        }               
+        }
 
         [When(@"I click edit on the first product")]
         public async Task WhenIClickEditOnTheFirstProduct()
@@ -167,7 +169,7 @@ namespace CreateInvoiceSystem.E2E.Steps
 
         [Then(@"the add product modal should close")]
         public async Task ThenTheAddProductModalShouldClose()
-        {            
+        {
             await Assertions.Expect(_productsPage.AddProductModal)
                 .Not.ToBeVisibleAsync(new() { Timeout = 5000 });
         }
@@ -200,7 +202,7 @@ namespace CreateInvoiceSystem.E2E.Steps
         public async Task WhenICountTheProductsInTheTable()
         {
             _productCountBefore = await _productsPage.GetProductCount();
-        }        
+        }
 
         [Then(@"the products count should be decreased by 1")]
         public async Task ThenTheProductsCountShouldBeDecreasedBy1()
