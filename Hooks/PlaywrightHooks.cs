@@ -24,13 +24,41 @@ namespace CreateInvoiceSystem.E2E.Hooks
             var headless = config.GetValue<bool>("Playwright:Headless");
             var slowMo = config.GetValue<int>("Playwright:SlowMo");
             var baseUrl = config.GetValue<string>("App:BaseUrl") ?? string.Empty;
+            var browser = config.GetValue<string>("Playwright:Browser") ?? "chromium";            
 
-            _playwright = await Playwright.CreateAsync();
-            _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            _playwright = await Playwright.CreateAsync();            
+
+            _browser = browser switch
             {
-                Headless = headless,
-                SlowMo = slowMo
-            });
+                "firefox" => await _playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions
+                {
+                    Headless = headless,
+                    SlowMo = slowMo
+                }),
+                "webkit" => await _playwright.Webkit.LaunchAsync(new BrowserTypeLaunchOptions
+                {
+                    Headless = headless,
+                    SlowMo = slowMo
+                }),
+                "msedge" => await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+                {
+                    Headless = headless,
+                    SlowMo = slowMo,
+                    Channel = "msedge"
+                }),
+                "chrome" => await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+                {
+                    Headless = headless,
+                    SlowMo = slowMo,
+                    Channel = "chrome"
+                }),
+                _ => await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+                {
+                    Headless = headless,
+                    SlowMo = slowMo
+                })
+            };
+
 
             var context = await _browser.NewContextAsync();
             _page = await context.NewPageAsync();
