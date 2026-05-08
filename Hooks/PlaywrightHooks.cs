@@ -7,17 +7,12 @@ using TechTalk.SpecFlow;
 namespace CreateInvoiceSystem.E2E.Hooks
 {
     [Binding]
-    public class PlaywrightHooks
+    public class PlaywrightHooks(IObjectContainer container)
     {
-        private readonly IObjectContainer _container;
-        private IPlaywright _playwright;
-        private IBrowser _browser;
-        private IPage _page;
-
-        public PlaywrightHooks(IObjectContainer container)
-        {
-            _container = container;
-        }
+        private readonly IObjectContainer _container = container;
+        private IPlaywright? _playwright;
+        private IBrowser? _browser;
+        private IPage? _page;
 
         [BeforeScenario]
         public async Task BeforeScenario()
@@ -50,9 +45,17 @@ namespace CreateInvoiceSystem.E2E.Hooks
         [AfterScenario]
         public async Task AfterScenario()
         {
-            await _page.CloseAsync();
-            await _browser.CloseAsync();
-            _playwright.Dispose();
+            if (_page != null)
+            {
+                await _page.CloseAsync();
+            }
+
+            if (_browser != null)
+            {
+                await _browser.CloseAsync();
+            }
+
+            _playwright?.Dispose();
         }
     }
 }
