@@ -5,10 +5,12 @@ namespace CreateInvoiceSystem.E2E.Pages
     public class LoginPage
     {
         private readonly IPage _page;
+        private readonly string _baseUrl;
 
-        public LoginPage(IPage page)
+        public LoginPage(IPage page, AppSettings settings)
         {
             _page = page;
+            _baseUrl = settings.BaseUrl;
         }
 
         public ILocator EmailInput => _page.Locator("input[type='email']");
@@ -54,7 +56,7 @@ namespace CreateInvoiceSystem.E2E.Pages
 
         public async Task GoToAsync()
         {
-            await _page.GotoAsync("https://createinvoicesystem-frontend-bfabepe5ekbbbec2.polandcentral-01.azurewebsites.net/login");
+            await _page.GotoAsync($"{_baseUrl}login");
         }
 
         public async Task LoginAsync(string email, string password)

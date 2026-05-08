@@ -24,11 +24,11 @@ namespace CreateInvoiceSystem.E2E.Hooks
         {
             var config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: false)
-                .AddJsonFile("appsettings.Development.json", optional: true)
                 .Build();
 
             var headless = config.GetValue<bool>("Playwright:Headless");
             var slowMo = config.GetValue<int>("Playwright:SlowMo");
+            var baseUrl = config.GetValue<string>("App:BaseUrl") ?? string.Empty;
 
             _playwright = await Playwright.CreateAsync();
             _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
@@ -41,6 +41,7 @@ namespace CreateInvoiceSystem.E2E.Hooks
             _page = await context.NewPageAsync();
 
             _container.RegisterInstanceAs(_page);
+            _container.RegisterInstanceAs(new AppSettings { BaseUrl = baseUrl });
 
             _container.RegisterTypeAs<LoginPage, LoginPage>();
             _container.RegisterTypeAs<DashboardPage, DashboardPage>();

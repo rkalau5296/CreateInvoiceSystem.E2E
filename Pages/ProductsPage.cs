@@ -84,6 +84,5 @@ namespace CreateInvoiceSystem.E2E.Pages
                 }
             }
         }
-
     }
 }

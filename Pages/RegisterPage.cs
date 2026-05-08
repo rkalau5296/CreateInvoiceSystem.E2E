@@ -5,15 +5,17 @@ namespace CreateInvoiceSystem.E2E.Pages
     public class RegisterPage
     {
         private readonly IPage _page;
+        private readonly string _baseUrl;
 
-        public RegisterPage(IPage page)
+        public RegisterPage(IPage page, AppSettings settings)
         {
             _page = page;
+            _baseUrl = settings.BaseUrl;
         }
 
         public async Task GoToAsync()
         {
-            await _page.GotoAsync("https://createinvoicesystem-frontend-bfabepe5ekbbbec2.polandcentral-01.azurewebsites.net/register");
+            await _page.GotoAsync($"{_baseUrl}register");
         }
 
         public async Task ClickRegisterButtonAsync()
