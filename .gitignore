@@ -363,3 +363,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# Konfiguracja VS Code (w tym Twoje launch.json)
+.vscode/
+
+# Pliki tymczasowe i binarne .NET
+bin/
+obj/
+
+# Pliki konfiguracyjne Ridera (jeśli nie chcesz ich dzielić z Windows)
+.idea/
