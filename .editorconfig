@@ -1,0 +1,7 @@
+root = true
+
+[*]
+charset = utf-8
+
+[*.feature]
+charset = utf-8-bom
