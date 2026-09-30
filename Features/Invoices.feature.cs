@@ -120,7 +120,7 @@ namespace CreateInvoiceSystem.E2E.Features
         
         private static global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages InitializeCucumberMessages()
         {
-            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Invoices.feature.ndjson", 6);
+            return new global::Reqnroll.Formatters.RuntimeSupport.FeatureLevelCucumberMessages("Features/Invoices.feature.ndjson", 4);
         }
         
         [global::NUnit.Framework.TestAttribute()]
@@ -200,13 +200,13 @@ namespace CreateInvoiceSystem.E2E.Features
         }
         
         [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Edit an existing invoice")]
-        public async global::System.Threading.Tasks.Task EditAnExistingInvoice()
+        [global::NUnit.Framework.DescriptionAttribute("Validation error when trying to save empty invoice form")]
+        public async global::System.Threading.Tasks.Task ValidationErrorWhenTryingToSaveEmptyInvoiceForm()
         {
             string[] tagsOfScenario = ((string[])(null));
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "1";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Edit an existing invoice", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validation error when trying to save empty invoice form", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
 #line 22
@@ -223,139 +223,39 @@ namespace CreateInvoiceSystem.E2E.Features
   await this.FeatureBackgroundAsync();
 #line hidden
 #line 23
-    await testRunner.WhenAsync("The user enters \'1/05/2026\' into the search bar", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 24
-    await testRunner.AndAsync("The user clicks \'Edytuj\' for invoice \'1/05/2026\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-                global::Reqnroll.Table table7 = new global::Reqnroll.Table(new string[] {
-                            "InvoiceNumber",
-                            "ClientName",
-                            "IssueDate",
-                            "DueDate"});
-                table7.AddRow(new string[] {
-                            "1/05/2026-EDIT",
-                            "Client Final",
-                            "2026-05-08",
-                            "2026-05-22"});
-#line 25
-    await testRunner.AndAsync("The user fills in the invoice form with following data:", ((string)(null)), table7, "And ");
-#line hidden
-#line 28
-    await testRunner.AndAsync("The user clicks the \'Zapisz\' button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 29
-    await testRunner.AndAsync("The user enters \'1/05/2026-EDIT\' into the search bar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 30
-    await testRunner.ThenAsync("The invoice \'1/05/2026-EDIT\' should be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-#line 31
-    await testRunner.AndAsync("The invoice \'1/05/2026\' should no longer be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Delete an invoice")]
-        public async global::System.Threading.Tasks.Task DeleteAnInvoice()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "2";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Delete an invoice", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
-            string[] tagsOfRule = ((string[])(null));
-            global::Reqnroll.RuleInfo ruleInfo = null;
-#line 33
-  this.ScenarioInitialize(scenarioInfo, ruleInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                await testRunner.SkipScenarioAsync();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 3
-  await this.FeatureBackgroundAsync();
-#line hidden
-#line 34
-    await testRunner.WhenAsync("The user enters \'DeleteMe Co\' into the search bar", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 35
-    await testRunner.AndAsync("The user clicks \'Usuń\' for invoice \'1/05/2026\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 36
-    await testRunner.AndAsync("The user confirms the action", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 37
-    await testRunner.AndAsync("The user enters \'1/05/2026\' into the search bar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 38
-    await testRunner.ThenAsync("The invoice \'1/05/2026\' should no longer be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
-            }
-            await this.ScenarioCleanupAsync();
-        }
-        
-        [global::NUnit.Framework.TestAttribute()]
-        [global::NUnit.Framework.DescriptionAttribute("Validation error when trying to save empty invoice form")]
-        public async global::System.Threading.Tasks.Task ValidationErrorWhenTryingToSaveEmptyInvoiceForm()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
-            string pickleIndex = "3";
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validation error when trying to save empty invoice form", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
-            string[] tagsOfRule = ((string[])(null));
-            global::Reqnroll.RuleInfo ruleInfo = null;
-#line 40
-  this.ScenarioInitialize(scenarioInfo, ruleInfo);
-#line hidden
-            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                await testRunner.SkipScenarioAsync();
-            }
-            else
-            {
-                await this.ScenarioStartAsync();
-#line 3
-  await this.FeatureBackgroundAsync();
-#line hidden
-#line 41
     await testRunner.WhenAsync("The user clicks the \'Wystaw nową fakturę\' button to issue an invoice", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 42
+#line 24
     await testRunner.AndAsync("The user clicks the \'Zapisz fakturę\' button to issue an invoice", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 43
+#line 25
     await testRunner.ThenAsync("Validation message \'Tytuł faktury jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 44
+#line 26
     await testRunner.ThenAsync("Validation message \'Metoda płatności jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 45
+#line 27
     await testRunner.ThenAsync("Validation message \'Nazwa klienta jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 46
+#line 28
     await testRunner.ThenAsync("Validation message \'NIP klienta jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 47
+#line 29
     await testRunner.ThenAsync("Validation message \'Ulica jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 48
+#line 30
     await testRunner.ThenAsync("Validation message \'Numer domu/lokalu jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 49
+#line 31
     await testRunner.ThenAsync("Validation message \'Kod pocztowy jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 50
+#line 32
     await testRunner.ThenAsync("Validation message \'Miasto jest wymagane\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 51
+#line 33
     await testRunner.ThenAsync("Validation message \'Nazwa produktu jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 52
+#line 34
     await testRunner.ThenAsync("Validation message \'Cena produktu jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
