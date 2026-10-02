@@ -1,6 +1,6 @@
-﻿using CreateInvoiceSystem.E2E.Hooks;
 using CreateInvoiceSystem.E2E.Pages;
 using FluentAssertions;
+using Microsoft.Extensions.Configuration;
 using Reqnroll;
 
 namespace CreateInvoiceSystem.E2E.Steps
@@ -10,6 +10,7 @@ namespace CreateInvoiceSystem.E2E.Steps
     {
         private readonly LoginPage _loginPage;
         private readonly DashboardPage _dashboardPage;
+
 
         public LoginSteps(LoginPage loginPage, DashboardPage dashboardPage)
         {
@@ -26,7 +27,19 @@ namespace CreateInvoiceSystem.E2E.Steps
         [When(@"I log in with valid credentials")]
         public async Task WhenILogInWithValidCredentials()
         {
-            await _loginPage.LoginAsync("rafal.kalata@icloud.com", "LampaAlladyna1830!!");
+            var config = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile(
+                    "appsettings.json",
+                    optional: false,
+                    reloadOnChange: false)
+                .AddEnvironmentVariables()
+                .Build();
+
+            var login = config["LoggingData:login"];
+            var password = config["LoggingData:password"];            
+           
+            await _loginPage.LoginAsync(login!, password!);
         }
 
         [Then(@"I should see the dashboard")]
