@@ -75,9 +75,10 @@ namespace CreateInvoiceSystem.E2E.Hooks
 
             _container.RegisterTypeAs<LoginPage, LoginPage>();
             _container.RegisterTypeAs<DashboardPage, DashboardPage>();
+            _container.RegisterTypeAs<InvoicesPage, InvoicesPage>();
         }
 
-        [AfterScenario]
+        [AfterScenario(Order = 1000)]
         public async Task AfterScenario()
         {
             if (_page != null)

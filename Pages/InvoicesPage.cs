@@ -4,42 +4,45 @@ using static Microsoft.Playwright.Assertions;
 namespace CreateInvoiceSystem.E2E.Pages
 {
     public record InvoiceData(string Title, string PaymentMethod, string ClientName, string Nip, string Email, string Street, string HouseNumber, string PostalCode, string City);
-    public record InvoicePositions(string Product, string Quantity, string Price, string Desription);
+    public record InvoicePositions(string Product, string Quantity, string Price, string Description);
 
-    public class InvoicesPage
+    public class InvoicesPage(IPage page)
     {
-        private readonly IPage _page;
+        private ILocator SearchInput => page.Locator("input[placeholder*='Numer faktury']");
+        private ILocator TableRows => page.Locator("table tbody tr");
+        public ILocator InvoicesNavLink => page.GetByRole(AriaRole.Link, new() { NameRegex = Helper.ToSafeRegex("Faktury") });
+        private ILocator InputTitle => page.Locator("label:has-text('Tytuł faktury') + input");
+        private ILocator PaymentMethod => page.Locator("label:has-text('Metoda płatności') + select");
+        private ILocator InputClientName => page.Locator("label:has-text('Wybierz klienta lub wpisz nową nazwę') + input");
+        private ILocator InputNip => page.Locator("label:has-text('NIP') + input");
+        private ILocator InputEmail => page.Locator("label:has-text('Email klienta') + input");
+        private ILocator InputStreet => page.Locator("label:has-text('Ulica') + input");
+        private ILocator InputHouseNumber => page.Locator("label:has-text('Nr domu/lok.') + input");
+        private ILocator InputPostalCode => page.Locator("label:has-text('Kod pocztowy') + input");
+        private ILocator InputCity => page.Locator("label:has-text('Miasto') + input");
+        private ILocator InputProduct => page.Locator("input[placeholder = 'Nazwa produktu...']");
+        private ILocator InputQunatity => page.Locator("input[min='1']");
+        private ILocator InputPrice => page.Locator("input[step='0.01']");
+        private ILocator DeleteButtons => page.GetByRole(AriaRole.Button, new() { Name = "Usuń" });
 
-        public InvoicesPage(IPage page)
-        {
-            _page = page;
-        }
+        private ILocator EditPaymentMethodSelect => page.Locator("label:has-text('Metoda płatności') + select");
 
-        private ILocator SearchInput => _page.Locator("input[placeholder*='Numer faktury']");
-        private ILocator TableRows => _page.Locator("table tbody tr");
-        public ILocator InvoicesNavLink => _page.GetByRole(AriaRole.Link, new() { NameRegex = Helper.ToSafeRegex("Faktury") });
-        private ILocator InputTitle => _page.Locator("label:has-text('Tytuł faktury') + input");
-        private ILocator PaymentMethod => _page.Locator("label:has-text('Metoda płatności') + select");
-        private ILocator InputClientName => _page.Locator("label:has-text('Wybierz klienta lub wpisz nową nazwę') + input");
-        private ILocator InputNip => _page.Locator("label:has-text('NIP') + input");
-        private ILocator InputEmail => _page.Locator("label:has-text('Email klienta') + input");
-        private ILocator InputStreet => _page.Locator("label:has-text('Ulica') + input");
-        private ILocator InputHouseNumber => _page.Locator("label:has-text('Nr domu/lok.') + input");
-        private ILocator InputPostalCode => _page.Locator("label:has-text('Kod pocztowy') + input");
-        private ILocator InputCity => _page.Locator("label:has-text('Miasto') + input");
-        private ILocator InputProduct => _page.Locator("input[placeholder = 'Nazwa produktu...']");
-        private ILocator InputQunatity => _page.Locator("input[min='1']");
-        private ILocator InputPrice => _page.Locator("input[step='0.01']");        
+        private ILocator EditClientNameInput => page.GetByPlaceholder("Wpisz nazwę klienta...", new() { Exact = true });
 
+        private ILocator EditClientAddressInput => page.Locator("label:has-text('Adres nabywcy') + textarea");
+
+        private ILocator EditClientNipInput => page.GetByPlaceholder("NIP", new() { Exact = true });
+
+        private ILocator EditClientEmailInput => page.GetByPlaceholder("Email", new() { Exact = true });
         public async Task NavigateAsync()
         {
             await InvoicesNavLink.ClickAsync();
-        }        
-
+        }
+        
         public async Task ClickButtonAsync(string buttonName)
         {
             var safeRegex = Helper.ToSafeRegex(buttonName);
-            await _page.GetByRole(AriaRole.Button, new() { NameRegex = safeRegex }).ClickAsync();
+            await page.GetByRole(AriaRole.Button, new() { NameRegex = safeRegex }).ClickAsync();
         }
 
         public async Task SearchAsync(string query)
@@ -65,7 +68,7 @@ namespace CreateInvoiceSystem.E2E.Pages
             var safeActionRegex = Helper.ToSafeRegex(actionName);
             var safeInvoiceRegex = Helper.ToSafeRegex(invoiceNumber);
                         
-            _page.Dialog += async (_, dialog) =>
+            page.Dialog += async (_, dialog) =>
             {
                 await dialog.AcceptAsync();
             };
@@ -78,7 +81,7 @@ namespace CreateInvoiceSystem.E2E.Pages
 
         public async Task AssertInvoiceIsVisibleAsync(string invoiceIdentifier)
         {
-            var row = _page.GetByRole(AriaRole.Row)
+            var row = page.GetByRole(AriaRole.Row)
                 .Filter(new() { HasText = invoiceIdentifier })
                 .Nth(0);
 
@@ -113,9 +116,44 @@ namespace CreateInvoiceSystem.E2E.Pages
 
         public async Task ConfirmActionAsync()
         {
-            var modal = _page.Locator(".modal-dialog, .modal-content").First;
+            var modal = page.Locator(".modal-dialog, .modal-content").First;
             var confirmButton = modal.GetByRole(AriaRole.Button, new() { NameRegex = Helper.ToSafeRegex("Potwierdź|Tak|Usuń") });
             await confirmButton.ClickAsync();
+        }
+        public async Task DeleteAllInvoicesAsync()
+        {
+            await NavigateAsync();
+            page.Dialog += async (_, dialog) =>
+            {
+                await dialog.AcceptAsync();
+            };
+
+            while (await DeleteButtons.CountAsync() > 0)
+            {
+                var deleteTask = DeleteButtons.First.ClickAsync();                
+                await deleteTask;
+            }
+        }
+        public async Task ClickEditForInvoiceAsync(string clientName)
+        {
+            var row = page.Locator("tr", new() { HasTextString = clientName });
+
+            await row.GetByRole(AriaRole.Button, new() { Name = "Edytuj" }).ClickAsync();
+        }
+
+        public async Task FillEditInvoiceFormAsync(InvoiceData invoice)
+        {
+            await EditPaymentMethodSelect.SelectOptionAsync(invoice.PaymentMethod);
+            await EditClientNameInput.FillAsync(invoice.ClientName);
+            await EditClientAddressInput.FillAsync(
+                $"{invoice.Street} {invoice.HouseNumber}, {invoice.PostalCode} {invoice.City}");
+            await EditClientNipInput.FillAsync(invoice.Nip);
+            await EditClientEmailInput.FillAsync(invoice.Email);
+        }
+
+        public async Task ReplaceInvoiceItemAsync(InvoicePositions data)
+        {
+            await AddItemAsync(data);
         }
     }
 }
