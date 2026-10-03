@@ -77,5 +77,12 @@ namespace CreateInvoiceSystem.E2E.Pages
                 }
             }
         }
+        public async Task DeleteAllProductsAsync()
+        {
+            while (await DeleteButtons.CountAsync() > 0)
+            {
+                await DeleteButtons.First.ClickAsync();                
+            }
+        }
     }
 }

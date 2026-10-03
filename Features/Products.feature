@@ -1,4 +1,4 @@
-Feature: Products
+﻿Feature: Products
   As a logged-in user
   I want to manage products
   So that I can add, edit, search and delete items
@@ -79,3 +79,6 @@ Scenario: Add product successfully
     Then the add product modal should close
     When I search for dynamic product name
     Then the products table should contain dynamic product name
+
+Scenario: Delete all products successfully
+	Then Delete every existing product.

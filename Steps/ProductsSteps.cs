@@ -1,4 +1,4 @@
-﻿using CreateInvoiceSystem.E2E.Pages;
+using CreateInvoiceSystem.E2E.Pages;
 using FluentAssertions;
 using Microsoft.Playwright;
 using Reqnroll;
@@ -237,6 +237,12 @@ namespace CreateInvoiceSystem.E2E.Steps
             await Assertions.Expect(
                 _productsPage.Page.Locator("table.table tbody")
             ).ToContainTextAsync(_dynamicProductName, new() { Timeout = 5000 });
+        }
+
+        [Then(@"Delete every existing product.")]
+        public async Task GivenThereAreNoProducts()
+        {            
+            await _productsPage.DeleteAllProductsAsync();
         }
     }
 }
