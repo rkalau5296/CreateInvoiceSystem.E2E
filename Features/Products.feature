@@ -18,9 +18,6 @@ Scenario: Products page loads correctly
 Scenario: Products table contains rows
 	Then the products table should have at least 1 row
 
-Scenario: Each product row has Edit and Delete buttons
-	Then each product row should have Edit and Delete buttons
-
 Scenario: Search filters products
     When I click the add product button
     And I fill the name with dynamic product name
@@ -52,10 +49,6 @@ Scenario: Add product validation - missing price
 	And I submit the add product form
 	Then the price validation message should be visible
 
-Scenario: Edit product navigates correctly
-	When I click edit on the first product
-	Then the url should contain '/products'
-
 Scenario: Delete product successfully
     When I click the add product button
     And I fill the name with dynamic product name
@@ -79,6 +72,9 @@ Scenario: Add product successfully
     Then the add product modal should close
     When I search for dynamic product name
     Then the products table should contain dynamic product name
+	Then each product row should have Edit and Delete buttons
+	When I click edit on the first product
+	Then the url should contain '/products'
 
 Scenario: Delete all products successfully
 	Then Delete every existing product.
