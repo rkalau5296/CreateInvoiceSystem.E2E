@@ -335,6 +335,9 @@ namespace CreateInvoiceSystem.E2E.Features
 #line 3
     await this.FeatureBackgroundAsync();
 #line hidden
+#line 43
+         await testRunner.WhenAsync("The user clicks the \'Wystaw nową fakturę\' button to issue an invoice", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
                 global::Reqnroll.Table table11 = new global::Reqnroll.Table(new string[] {
                             "Title",
                             "PaymentMethod",
@@ -355,8 +358,8 @@ namespace CreateInvoiceSystem.E2E.Features
                             "10A",
                             "00-001",
                             "Warszawa"});
-#line 43
-        await testRunner.GivenAsync("The user has created an invoice with following data:", ((string)(null)), table11, "Given ");
+#line 44
+        await testRunner.AndAsync("The user fills in the invoice form with following data:", ((string)(null)), table11, "And ");
 #line hidden
                 global::Reqnroll.Table table12 = new global::Reqnroll.Table(new string[] {
                             "Product",
@@ -366,14 +369,17 @@ namespace CreateInvoiceSystem.E2E.Features
                             "Usługa IT",
                             "1",
                             "500.00"});
-#line 46
-        await testRunner.AndAsync("The invoice has following items:", ((string)(null)), table12, "And ");
-#line hidden
-#line 49
-        await testRunner.WhenAsync("The user clicks \'Usuń\' for invoice \'Simple Client\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line 47
+        await testRunner.AndAsync("The user adds an invoice item with following data:", ((string)(null)), table12, "And ");
 #line hidden
 #line 50
-        await testRunner.ThenAsync("The invoice \'Simple Client\' should not be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+        await testRunner.AndAsync("The user clicks the \'Zapisz fakturę\' button to issue an invoice", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 51
+        await testRunner.WhenAsync("The user clicks \'Usuń\' for invoice \'Simple Client\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 52
+        await testRunner.ThenAsync("The invoice \'Simple Client\' should no longer be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -389,7 +395,7 @@ namespace CreateInvoiceSystem.E2E.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validation error when trying to save empty invoice form", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 52
+#line 54
     this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -402,40 +408,40 @@ namespace CreateInvoiceSystem.E2E.Features
 #line 3
     await this.FeatureBackgroundAsync();
 #line hidden
-#line 53
+#line 55
         await testRunner.WhenAsync("The user clicks the \'Wystaw nową fakturę\' button to issue an invoice", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 54
+#line 56
         await testRunner.AndAsync("The user clicks the \'Zapisz fakturę\' button to issue an invoice", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 55
+#line 57
         await testRunner.ThenAsync("Validation message \'Tytuł faktury jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 56
+#line 58
         await testRunner.AndAsync("Validation message \'Metoda płatności jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 57
+#line 59
         await testRunner.AndAsync("Validation message \'Nazwa klienta jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 58
+#line 60
         await testRunner.AndAsync("Validation message \'NIP klienta jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 59
+#line 61
         await testRunner.AndAsync("Validation message \'Ulica jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 60
+#line 62
         await testRunner.AndAsync("Validation message \'Numer domu/lokalu jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 61
+#line 63
         await testRunner.AndAsync("Validation message \'Kod pocztowy jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 62
+#line 64
         await testRunner.AndAsync("Validation message \'Miasto jest wymagane\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 63
+#line 65
         await testRunner.AndAsync("Validation message \'Nazwa produktu jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 64
+#line 66
         await testRunner.AndAsync("Validation message \'Cena produktu jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }

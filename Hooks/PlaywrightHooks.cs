@@ -76,6 +76,8 @@ namespace CreateInvoiceSystem.E2E.Hooks
             _container.RegisterTypeAs<LoginPage, LoginPage>();
             _container.RegisterTypeAs<DashboardPage, DashboardPage>();
             _container.RegisterTypeAs<InvoicesPage, InvoicesPage>();
+            _container.RegisterTypeAs<ClientsPage, ClientsPage>();
+            _container.RegisterTypeAs<ProductsPage, ProductsPage>();
         }
 
         [AfterScenario(Order = 1000)]

@@ -40,15 +40,17 @@
    
    @invoices
     Scenario: Delete an existing invoice successfully
-        Given The user has created an invoice with following data:
+         When The user clicks the 'Wystaw nową fakturę' button to issue an invoice
+        And The user fills in the invoice form with following data:
             | Title      | PaymentMethod | ClientName    | Nip        | Email                            | Street    | HouseNumber | PostalCode | City     |
             | 2/05/2026  | Przelew       | Simple Client | 1234567890 | rafal.kalata.itservice@gmail.com | Dłutowa 5 | 10A         | 00-001     | Warszawa |
-        And The invoice has following items:
-            | Product    | Quantity | Price  |
-            | Usługa IT  | 1        | 500.00 |
+        And The user adds an invoice item with following data:
+            | Product   | Quantity | Price  |
+            | Usługa IT | 1        | 500.00 |
+        And The user clicks the 'Zapisz fakturę' button to issue an invoice
         When The user clicks 'Usuń' for invoice 'Simple Client'
-        Then The invoice 'Simple Client' should not be visible in the list
-
+        Then The invoice 'Simple Client' should no longer be visible in the list
+        
     Scenario: Validation error when trying to save empty invoice form
         When The user clicks the 'Wystaw nową fakturę' button to issue an invoice
         And The user clicks the 'Zapisz fakturę' button to issue an invoice

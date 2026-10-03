@@ -126,15 +126,17 @@ namespace CreateInvoiceSystem.E2E.Features
         
         [global::NUnit.Framework.TestAttribute()]
         [global::NUnit.Framework.DescriptionAttribute("Successfully add a new client with all fields and cleanup")]
+        [global::NUnit.Framework.CategoryAttribute("clients")]
         public async global::System.Threading.Tasks.Task SuccessfullyAddANewClientWithAllFieldsAndCleanup()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "clients"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "0";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Successfully add a new client with all fields and cleanup", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 11
+#line 12
     this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -147,7 +149,7 @@ namespace CreateInvoiceSystem.E2E.Features
 #line 6
     await this.FeatureBackgroundAsync();
 #line hidden
-#line 12
+#line 13
         await testRunner.WhenAsync("The user clicks the \'Add client\' button", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
@@ -166,23 +168,17 @@ namespace CreateInvoiceSystem.E2E.Features
                             "10",
                             "00-001",
                             "Warsaw"});
-#line 13
+#line 14
         await testRunner.AndAsync("The user fills in the form with following data:", ((string)(null)), table1, "And ");
 #line hidden
-#line 16
+#line 17
         await testRunner.AndAsync("The user clicks the \'Save\' button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 17
+#line 18
         await testRunner.AndAsync("The user enters \'New Corp LLC\' into the search bar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 18
-        await testRunner.ThenAsync("The new client \'New Corp LLC\' should be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
 #line 19
-        await testRunner.WhenAsync("The user clicks \'Usu�\' for client \'New Corp LLC\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 20
-        await testRunner.ThenAsync("The client \'New Corp LLC\' should no longer be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+        await testRunner.ThenAsync("The new client \'New Corp LLC\' should be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -198,7 +194,7 @@ namespace CreateInvoiceSystem.E2E.Features
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Verify mandatory field validations", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 22
+#line 21
     this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -211,28 +207,28 @@ namespace CreateInvoiceSystem.E2E.Features
 #line 6
     await this.FeatureBackgroundAsync();
 #line hidden
-#line 23
+#line 22
         await testRunner.WhenAsync("The user clicks the \'Add client\' button", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 24
+#line 23
         await testRunner.AndAsync("The user clicks the \'Save\' button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
+#line 24
+        await testRunner.ThenAsync("Validation message \'Musisz podać nazwę klienta\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
 #line 25
-        await testRunner.ThenAsync("Validation message \'Musisz poda� nazw� klienta\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+        await testRunner.AndAsync("Validation message \'NIP jest obowiązkowy\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 26
-        await testRunner.AndAsync("Validation message \'NIP jest obowi�zkowy\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
-#line hidden
-#line 27
         await testRunner.AndAsync("Validation message \'Ulica jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 28
+#line 27
         await testRunner.AndAsync("Validation message \'Numer domu/lokalu jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 29
+#line 28
         await testRunner.AndAsync("Validation message \'Kod pocztowy jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 30
+#line 29
         await testRunner.AndAsync("Validation message \'Miasto jest wymagane\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
@@ -241,9 +237,11 @@ namespace CreateInvoiceSystem.E2E.Features
         
         [global::NUnit.Framework.TestAttribute()]
         [global::NUnit.Framework.DescriptionAttribute("Update newly added client information and cleanup")]
+        [global::NUnit.Framework.CategoryAttribute("clients")]
         public async global::System.Threading.Tasks.Task UpdateNewlyAddedClientInformationAndCleanup()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "clients"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "2";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Update newly added client information and cleanup", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
@@ -324,27 +322,23 @@ namespace CreateInvoiceSystem.E2E.Features
 #line 46
         await testRunner.AndAsync("The client \'Temp Client\' should no longer be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 47
-        await testRunner.WhenAsync("The user clicks \'Usu�\' for client \'Client Final\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
-#line 48
-        await testRunner.ThenAsync("The client \'Client Final\' should no longer be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
-#line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
         [global::NUnit.Framework.TestAttribute()]
         [global::NUnit.Framework.DescriptionAttribute("Remove a newly added client from the system")]
+        [global::NUnit.Framework.CategoryAttribute("clients")]
         public async global::System.Threading.Tasks.Task RemoveANewlyAddedClientFromTheSystem()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "clients"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             string pickleIndex = "3";
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Remove a newly added client from the system", null, tagsOfScenario, argumentsOfScenario, featureTags, pickleIndex);
             string[] tagsOfRule = ((string[])(null));
             global::Reqnroll.RuleInfo ruleInfo = null;
-#line 50
+#line 49
     this.ScenarioInitialize(scenarioInfo, ruleInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -357,7 +351,7 @@ namespace CreateInvoiceSystem.E2E.Features
 #line 6
     await this.FeatureBackgroundAsync();
 #line hidden
-#line 51
+#line 50
         await testRunner.WhenAsync("The user clicks the \'Add client\' button", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table4 = new global::Reqnroll.Table(new string[] {
@@ -376,23 +370,23 @@ namespace CreateInvoiceSystem.E2E.Features
                             "99",
                             "00-999",
                             "Warsaw"});
-#line 52
+#line 51
         await testRunner.AndAsync("The user fills in the form with following data:", ((string)(null)), table4, "And ");
 #line hidden
-#line 55
+#line 54
         await testRunner.AndAsync("The user clicks the \'Save\' button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 56
+#line 55
         await testRunner.AndAsync("The user enters \'DeleteMe Co\' into the search bar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 57
-        await testRunner.AndAsync("The user clicks \'Usu�\' for client \'DeleteMe Co\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 56
+        await testRunner.AndAsync("The user clicks \'Usuń\' for client \'DeleteMe Co\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 58
+#line 57
         await testRunner.ThenAsync("The client \'DeleteMe Co\' should no longer be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
-#line 59
-        await testRunner.AndAsync("The footer text should contain \'Pokazuj� 0 z 0 klient�w | Strona 1 z 0\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line 58
+        await testRunner.AndAsync("The footer text should contain \'Pokazuję 0 z 0 klientów | Strona 1 z 0\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

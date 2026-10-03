@@ -15,8 +15,8 @@ public class ClientsPage(IPage page)
     private ILocator FooterText => _page.Locator(".text-muted.small");
     private ILocator ValidationErrors => _page.Locator(".text-danger.small");
     private ILocator SaveBtn => _page.GetByRole(AriaRole.Button, new() { Name = "Zapisz" });
-    public ILocator ClientsNavLink => _page.GetByRole(AriaRole.Link, new() { Name = "👥 Klienci" });                                
-
+    public ILocator ClientsNavLink => _page.GetByRole(AriaRole.Link, new() { Name = "👥 Klienci" });
+    public ILocator DeleteClient => _page.GetByRole(AriaRole.Button, new() { Name = "Usuń" });
     private ILocator InputFirmName => _page.Locator("label:has-text('Nazwa firmy') + div input");
     private ILocator InputNIP => _page.Locator("label:has-text('NIP') + div input");
     private ILocator InputEmail => _page.Locator("label:has-text('E-mail') + div input");
@@ -26,7 +26,7 @@ public class ClientsPage(IPage page)
     private ILocator InputCity => _page.Locator("label:has-text('Miasto') + div input");
 
     public async Task NavigateAsync(string baseUrl) => await _page.GotoAsync($"{baseUrl}/clients");
-
+    public async Task GotoAsync() => await ClientsNavLink.ClickAsync();    
     public async Task ClickAddClientAsync() => await AddClientBtn.ClickAsync();
 
     public async Task SearchAsync(string query) 
@@ -76,5 +76,15 @@ public class ClientsPage(IPage page)
         var footer = FooterText.First;
         var text = await footer.InnerTextAsync();
         return Regex.Replace(text, @"\s+", " ").Trim();
+    }
+
+    public async Task CleanupClientsAsync()
+    {
+        await GotoAsync();
+
+        while (await DeleteClient.CountAsync() > 0)
+        {
+            await DeleteClient.First.ClickAsync();            
+        }
     }
 }

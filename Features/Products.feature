@@ -75,6 +75,3 @@ Scenario: Add product successfully
 	Then each product row should have Edit and Delete buttons
 	When I click edit on the first product
 	Then the url should contain '/products'
-
-Scenario: Delete all products successfully
-	Then Delete every existing product.
