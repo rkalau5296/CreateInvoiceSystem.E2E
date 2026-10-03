@@ -149,7 +149,7 @@ namespace CreateInvoiceSystem.E2E.Features
 #line 9
     await testRunner.WhenAsync("The user clicks the \'Wystaw nową fakturę\' button to issue an invoice", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-                global::Reqnroll.Table table5 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table1 = new global::Reqnroll.Table(new string[] {
                             "Title",
                             "PaymentMethod",
                             "ClientName",
@@ -159,10 +159,10 @@ namespace CreateInvoiceSystem.E2E.Features
                             "HouseNumber",
                             "PostalCode",
                             "City"});
-                table5.AddRow(new string[] {
+                table1.AddRow(new string[] {
                             "2/05/2026",
                             "Przelew",
-                            "Temp Client",
+                            "Simple Client",
                             "1234567890",
                             "rafal.kalata.itservice@gmail.com",
                             "Dłutowa 5",
@@ -170,30 +170,30 @@ namespace CreateInvoiceSystem.E2E.Features
                             "00-001",
                             "Warszawa"});
 #line 10
-    await testRunner.AndAsync("The user fills in the invoice form with following data:", ((string)(null)), table5, "And ");
+    await testRunner.AndAsync("The user fills in the invoice form with following data:", ((string)(null)), table1, "And ");
 #line hidden
-                global::Reqnroll.Table table6 = new global::Reqnroll.Table(new string[] {
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
                             "Product",
                             "Quantity",
                             "Price"});
-                table6.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Usługa IT",
                             "1",
                             "500.00"});
 #line 14
-    await testRunner.AndAsync("The user adds an invoice item with following data:", ((string)(null)), table6, "And ");
+    await testRunner.AndAsync("The user adds an invoice item with following data:", ((string)(null)), table2, "And ");
 #line hidden
 #line 17
     await testRunner.AndAsync("The user clicks the \'Zapisz fakturę\' button to issue an invoice", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 18
-    await testRunner.AndAsync("The user enters \'Temp Client\' into the invoice search bar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+    await testRunner.AndAsync("The user enters \'Simple Client\' into the invoice search bar", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 19
-    await testRunner.ThenAsync("The invoice \'Temp Client\' should be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("The invoice \'Simple Client\' should be visible in the list", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 20
-    await testRunner.WhenAsync("The user clicks \'Usuń\' for invoice \'Temp Client\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("The user clicks \'Usuń\' for invoice \'Simple Client\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

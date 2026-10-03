@@ -1,17 +1,11 @@
-﻿using Microsoft.Playwright;
+using Microsoft.Playwright;
 
 namespace CreateInvoiceSystem.E2E.Pages
 {
-    public class LoginPage
+    public class LoginPage(IPage page, AppSettings settings)
     {
-        private readonly IPage _page;
-        private readonly string _baseUrl;
-
-        public LoginPage(IPage page, AppSettings settings)
-        {
-            _page = page;
-            _baseUrl = settings.BaseUrl;
-        }
+        private readonly IPage _page = page;
+        private readonly string _baseUrl = settings.BaseUrl;
 
         public ILocator EmailInput => _page.Locator("input[type='email']");
         public ILocator PasswordInput => _page.Locator("input[type='password']");
@@ -56,7 +50,7 @@ namespace CreateInvoiceSystem.E2E.Pages
 
         public async Task GoToAsync()
         {
-            await _page.GotoAsync($"{_baseUrl}login");
+            await _page.GotoAsync($"{_baseUrl}/login");
         }
 
         public async Task LoginAsync(string email, string password)

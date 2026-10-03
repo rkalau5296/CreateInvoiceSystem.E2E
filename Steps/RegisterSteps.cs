@@ -1,4 +1,4 @@
-﻿using CreateInvoiceSystem.E2E.Pages;
+using CreateInvoiceSystem.E2E.Pages;
 using FluentAssertions;
 using Reqnroll;
 
@@ -193,7 +193,7 @@ namespace CreateInvoiceSystem.E2E.Steps
         [Then(@"I should be on the Login page")]
         public async Task ThenIShouldBeOnTheLoginPage()
         {
-            var url = await _page.CurrentUrl();
+            var url = _page.CurrentUrl();
             url.Should().Contain("/login");
         }
     }

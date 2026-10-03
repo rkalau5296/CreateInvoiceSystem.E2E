@@ -10,14 +10,14 @@
     And The user fills in the invoice form with following data:
 
       | Title     | PaymentMethod | ClientName  | Nip        | Email                            | Street    | HouseNumber | PostalCode | City     |
-      | 2/05/2026 | Przelew       | Temp Client | 1234567890 | rafal.kalata.itservice@gmail.com | Dłutowa 5 | 10A         | 00-001     | Warszawa |
+      | 2/05/2026 | Przelew       | Simple Client | 1234567890 | rafal.kalata.itservice@gmail.com | Dłutowa 5 | 10A         | 00-001     | Warszawa |
     And The user adds an invoice item with following data:
       | Product     | Quantity | Price        |
       | Usługa IT   | 1        | 500.00       |
     And The user clicks the 'Zapisz fakturę' button to issue an invoice
-    And The user enters 'Temp Client' into the invoice search bar
-    Then The invoice 'Temp Client' should be visible in the list
-    When The user clicks 'Usuń' for invoice 'Temp Client'      
+    And The user enters 'Simple Client' into the invoice search bar
+    Then The invoice 'Simple Client' should be visible in the list
+    When The user clicks 'Usuń' for invoice 'Simple Client'      
 
   Scenario: Validation error when trying to save empty invoice form
     When The user clicks the 'Wystaw nową fakturę' button to issue an invoice

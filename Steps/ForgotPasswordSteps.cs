@@ -1,4 +1,4 @@
-﻿using CreateInvoiceSystem.E2E.Pages;
+using CreateInvoiceSystem.E2E.Pages;
 using FluentAssertions;
 using Reqnroll;
 
@@ -6,13 +6,11 @@ namespace CreateInvoiceSystem.E2E.Steps
 {
     [Binding]
     public class ForgotPasswordSteps
-    {
-        private readonly LoginPage _loginPage;
+    {       
         private readonly ForgotPasswordPage _forgotPasswordPage;
 
-        public ForgotPasswordSteps(LoginPage loginPage, ForgotPasswordPage forgotPasswordPage)
-        {
-            _loginPage = loginPage;
+        public ForgotPasswordSteps(ForgotPasswordPage forgotPasswordPage)
+        {           
             _forgotPasswordPage = forgotPasswordPage;
         }
 

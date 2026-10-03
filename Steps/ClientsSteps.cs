@@ -1,9 +1,7 @@
-﻿using CreateInvoiceSystem.E2E.Hooks;
 using CreateInvoiceSystem.E2E.Pages;
 using FluentAssertions;
 using Microsoft.Playwright;
 using Reqnroll;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CreateInvoiceSystem.E2E.Steps;
 

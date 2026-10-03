@@ -1,4 +1,4 @@
-﻿using CreateInvoiceSystem.E2E.Pages;
+using CreateInvoiceSystem.E2E.Pages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Playwright;
 using Reqnroll;
@@ -18,13 +18,20 @@ namespace CreateInvoiceSystem.E2E.Hooks
         public async Task BeforeScenario()
         {
             var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false)
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile(
+                    "appsettings.json",
+                    optional: false,
+                    reloadOnChange: false)
+                .AddEnvironmentVariables()
                 .Build();
 
             var headless = config.GetValue<bool>("Playwright:Headless");
             var slowMo = config.GetValue<int>("Playwright:SlowMo");
             var baseUrl = config.GetValue<string>("App:BaseUrl") ?? string.Empty;
-            var browser = config.GetValue<string>("Playwright:Browser") ?? "chromium";            
+            var browser = config.GetValue<string>("Playwright:Browser") ?? "chromium";
+            var login = config.GetValue<string>("LoggingData:login") ?? string.Empty;
+            var password = config.GetValue<string>("LoggingData:password") ?? string.Empty;
 
             _playwright = await Playwright.CreateAsync();            
 
@@ -64,7 +71,7 @@ namespace CreateInvoiceSystem.E2E.Hooks
             _page = await context.NewPageAsync();
 
             _container.RegisterInstanceAs(_page);
-            _container.RegisterInstanceAs(new AppSettings { BaseUrl = baseUrl });
+            _container.RegisterInstanceAs(new AppSettings { BaseUrl = baseUrl, Login = login, Password = password});
 
             _container.RegisterTypeAs<LoginPage, LoginPage>();
             _container.RegisterTypeAs<DashboardPage, DashboardPage>();
