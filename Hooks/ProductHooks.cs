@@ -7,7 +7,7 @@ namespace CreateInvoiceSystem.E2E.Hooks
 
     public sealed class ProductHooks(ProductsPage productsPage)
     {
-        [AfterScenario("products", Order = 100)]
+        [AfterScenario("products", "invoices", Order = 300)]
         public async Task CleanupInvoicesAsync()
         {            
             await productsPage.DeleteAllProductsAsync();
