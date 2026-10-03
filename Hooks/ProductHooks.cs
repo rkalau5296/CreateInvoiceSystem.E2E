@@ -9,7 +9,7 @@ namespace CreateInvoiceSystem.E2E.Hooks
     {
         [AfterScenario("products", Order = 100)]
         public async Task CleanupInvoicesAsync()
-        {
+        {            
             await productsPage.DeleteAllProductsAsync();
         }
     }

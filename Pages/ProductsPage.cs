@@ -25,6 +25,7 @@ namespace CreateInvoiceSystem.E2E.Pages
         public ILocator DeleteModal => page.Locator(".modal.show");
         public ILocator ProductsNavLink => page.GetByRole(AriaRole.Link, new() { Name = "📦 Produkty" });
 
+        public async Task GotoProductsAsync() => await ProductsNavLink.ClickAsync();
         public async Task ClickAddProduct() =>  await AddProductButton.ClickAsync();
         public async Task ClickEditFirstProduct() => await EditButtons.First.ClickAsync();
         public async Task ClickDeleteFirstProduct() => await DeleteButtons.First.ClickAsync();
@@ -79,6 +80,9 @@ namespace CreateInvoiceSystem.E2E.Pages
         }
         public async Task DeleteAllProductsAsync()
         {
+            await GotoProductsAsync();
+
+            await SearchInput.FillAsync(string.Empty);
             while (await DeleteButtons.CountAsync() > 0)
             {
                 await DeleteButtons.First.ClickAsync();                

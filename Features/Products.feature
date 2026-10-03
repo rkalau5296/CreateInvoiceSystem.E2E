@@ -18,6 +18,7 @@ Scenario: Products page loads correctly
 Scenario: Products table contains rows
 	Then the products table should have at least 1 row
 
+	@products
 Scenario: Search filters products
     When I click the add product button
     And I fill the name with dynamic product name

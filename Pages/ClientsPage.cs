@@ -26,7 +26,7 @@ public class ClientsPage(IPage page)
     private ILocator InputCity => _page.Locator("label:has-text('Miasto') + div input");
 
     public async Task NavigateAsync(string baseUrl) => await _page.GotoAsync($"{baseUrl}/clients");
-    public async Task GotoAsync() => await ClientsNavLink.ClickAsync();    
+    public async Task GotoClientsAsync() => await ClientsNavLink.ClickAsync();    
     public async Task ClickAddClientAsync() => await AddClientBtn.ClickAsync();
 
     public async Task SearchAsync(string query) 
@@ -80,11 +80,13 @@ public class ClientsPage(IPage page)
 
     public async Task CleanupClientsAsync()
     {
-        await GotoAsync();
+        await GotoClientsAsync();
+
+        await SearchInput.FillAsync(string.Empty);        
 
         while (await DeleteClient.CountAsync() > 0)
         {
-            await DeleteClient.First.ClickAsync();            
+            await DeleteClient.First.ClickAsync();
         }
     }
 }
