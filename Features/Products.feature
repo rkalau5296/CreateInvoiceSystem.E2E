@@ -49,6 +49,7 @@ Scenario: Add product validation - missing price
 	And I submit the add product form
 	Then the price validation message should be visible
 
+	@products
 Scenario: Delete product successfully
     When I click the add product button
     And I fill the name with dynamic product name
@@ -63,6 +64,7 @@ Scenario: Delete product successfully
 Scenario: Pagination controls are visible
 	Then I should see pagination controls
 
+	@products
 Scenario: Add product successfully
     When I click the add product button
     And I fill the name with dynamic product name
