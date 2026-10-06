@@ -19,7 +19,7 @@ namespace CreateInvoiceSystem.E2E.Pages
         public ILocator ModalNameInput => page.Locator("input[placeholder='np. Kawa']");
         public ILocator ModalDescriptionInput => page.Locator("input[placeholder='Opcjonalny opis...']");
         public ILocator ModalPriceInput => page.Locator("input[inputmode='decimal']");
-        public ILocator NameValidation => page.Locator("text=Nazwa jest wymagana.");
+        public ILocator NameValidation => page.Locator("text=Nazwa produktu jest wymagana");
         public ILocator PriceValidation => page.Locator("text=Podaj prawidłową cenę (maksymalnie 2 miejsca po przecinku)");
         public ILocator ModalSaveButton => page.GetByRole(AriaRole.Button, new() { Name = "Zapisz produkt" });
         public ILocator DeleteModal => page.Locator(".modal.show");
