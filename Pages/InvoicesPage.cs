@@ -27,13 +27,13 @@ namespace CreateInvoiceSystem.E2E.Pages
 
         private ILocator EditPaymentMethodSelect => page.Locator("label:has-text('Metoda płatności') + select");
 
-        private ILocator EditClientNameInput => page.GetByPlaceholder("Wpisz nazwę klienta...", new() { Exact = true });
+        private ILocator EditClientNameInput => page.GetByPlaceholder("Nazwa klienta...", new() { Exact = true });
 
         private ILocator EditClientAddressInput => page.Locator("label:has-text('Adres nabywcy') + textarea");
 
         private ILocator EditClientNipInput => page.GetByPlaceholder("NIP", new() { Exact = true });
 
-        private ILocator EditClientEmailInput => page.GetByPlaceholder("Email", new() { Exact = true });
+        private ILocator EditClientEmailInput => page.GetByPlaceholder("email@klienta.pl", new() { Exact = true });
         public async Task NavigateAsync()
         {
             await InvoicesNavLink.ClickAsync();
