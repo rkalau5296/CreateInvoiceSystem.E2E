@@ -123,14 +123,14 @@ namespace CreateInvoiceSystem.E2E.Steps
             isInvalid.Should().BeTrue("the email input should have the 'is-invalid' class");
 
             var message = await _forgotPasswordPage.GetEmailFieldErrorMessageAsync();
-            message.Should().Be("Podaj adres e-mail");
+            message.Should().Be("Email jest wymagany");
         }
 
         [Then(@"a global validation alert should be displayed")]
         public async Task ThenAGlobalValidationAlertShouldBeDisplayed()
         {
             var alert = await _forgotPasswordPage.GetGlobalValidationAlertAsync();
-            alert.Should().Contain("Uzupełnij wymagane pola.");
+            alert.Should().Contain("Uzupełnij poprawny adres e-mail.");
         }
 
     }

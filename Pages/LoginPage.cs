@@ -6,13 +6,10 @@ namespace CreateInvoiceSystem.E2E.Pages
     {
         private readonly IPage _page = page;
         private readonly string _baseUrl = settings.BaseUrl;
-
-        public ILocator EmailInput => _page.Locator("input[type='email']");
-        public ILocator PasswordInput => _page.Locator("input[type='password']");
+                
         public ILocator RememberMeCheckbox => _page.Locator("#rememberMe");
         public ILocator ForgotPasswordLink => _page.Locator("a[href='/forgot-password']");
-        public ILocator RegisterLink => _page.Locator("a[href='/register']");
-        public ILocator LoginButton => _page.Locator("button[type='submit']");
+        public ILocator RegisterLink => _page.Locator("a[href='/register']");        
 
         private bool _rememberMeInitialState;
 
@@ -55,7 +52,7 @@ namespace CreateInvoiceSystem.E2E.Pages
 
         public async Task LoginAsync(string email, string password)
         {
-            await _page.FillAsync("input[type='email']", email);
+            await _page.FillAsync("input[type='text']", email);
             await _page.FillAsync("input[type='password']", password);
             await _page.ClickAsync("button:has-text('Zaloguj')");
         }
