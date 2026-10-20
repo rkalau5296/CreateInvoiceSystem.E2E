@@ -17,10 +17,10 @@ namespace CreateInvoiceSystem.E2E.Pages
         public ILocator Pagination => page.Locator(".btn-group");                
         public ILocator AddProductModal => page.Locator(".modal-dialog");
         public ILocator ModalNameInput => page.Locator("input[placeholder='np. Kawa']");
-        public ILocator ModalDescriptionInput => page.Locator("input[placeholder='Opcjonalny opis...']");
+        public ILocator ModalDescriptionInput => page.Locator("textarea[placeholder='Opcjonalny opis...']");
         public ILocator ModalPriceInput => page.Locator("input[inputmode='decimal']");
-        public ILocator NameValidation => page.Locator("text=Nazwa produktu jest wymagana");
-        public ILocator PriceValidation => page.Locator("text=Podaj prawidłową cenę (maksymalnie 2 miejsca po przecinku)");
+        public ILocator NameValidation => page.Locator("text=Pole jest wymagane");
+        public ILocator PriceValidation => page.Locator("text=Podaj prawidłową cenę");
         public ILocator ModalSaveButton => page.GetByRole(AriaRole.Button, new() { Name = "Zapisz produkt" });
         public ILocator DeleteModal => page.Locator(".modal.show");
         public ILocator ProductsNavLink => page.GetByRole(AriaRole.Link, new() { Name = "📦 Produkty" });
