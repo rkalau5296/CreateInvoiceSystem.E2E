@@ -138,7 +138,7 @@ namespace CreateInvoiceSystem.E2E.Steps
 
                 case "RegisterFeature":
                     string registerAlert = await _forgotPasswordPage.GetGlobalValidationAlertAsync();
-                    registerAlert.Should().Contain("Uzupełnij wymagane pola.");
+                    registerAlert.Should().Contain("Uzupełnij poprawnie wszystkie wymagane pola.");
                     break;
 
                 default:
