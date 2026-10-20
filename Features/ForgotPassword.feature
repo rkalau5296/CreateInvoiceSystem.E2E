@@ -1,4 +1,4 @@
-Feature: Forgot Password
+﻿Feature: Forgot Password
   As a user
   I want to reset my password
   So that I can regain access to my account
@@ -34,5 +34,4 @@ Scenario: Validation when email field is empty
 	Given I am on the reset confirmation page
 	Then I should click reset button
 	Then the email field should show a required validation message
-	And a global validation alert should be displayed
-
+	And a global validation alert should be displayed 'ForgotPassword'

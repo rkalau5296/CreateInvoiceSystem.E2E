@@ -6,11 +6,11 @@ namespace CreateInvoiceSystem.E2E.Steps
 {
     [Binding]
     public class ForgotPasswordSteps
-    {       
+    {
         private readonly ForgotPasswordPage _forgotPasswordPage;
 
         public ForgotPasswordSteps(ForgotPasswordPage forgotPasswordPage)
-        {           
+        {
             _forgotPasswordPage = forgotPasswordPage;
         }
 
@@ -126,12 +126,24 @@ namespace CreateInvoiceSystem.E2E.Steps
             message.Should().Be("Email jest wymagany");
         }
 
-        [Then(@"a global validation alert should be displayed")]
-        public async Task ThenAGlobalValidationAlertShouldBeDisplayed()
+        [Then(@"a global validation alert should be displayed '(.*)'")]
+        public async Task ThenAGlobalValidationAlertShouldBeDisplayed(string page)
         {
-            var alert = await _forgotPasswordPage.GetGlobalValidationAlertAsync();
-            alert.Should().Contain("Uzupełnij poprawny adres e-mail.");
-        }
+            switch (page)
+            {
+                case "ForgotPassword":
+                    string forgotPasswordAlert = await _forgotPasswordPage.GetGlobalValidationAlertAsync();
+                    forgotPasswordAlert.Should().Contain("Uzupełnij poprawny adres e-mail.");
+                    break;
 
+                case "RegisterFeature":
+                    string registerAlert = await _forgotPasswordPage.GetGlobalValidationAlertAsync();
+                    registerAlert.Should().Contain("Uzupełnij wymagane pola.");
+                    break;
+
+                default:
+                    throw new ArgumentException($"Nieobsługiwana strona: {page}", nameof(page));
+            }
+        }
     }
 }

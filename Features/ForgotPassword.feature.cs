@@ -292,7 +292,7 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
  await testRunner.ThenAsync("the email field should show a required validation message", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 37
- await testRunner.AndAsync("a global validation alert should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("a global validation alert should be displayed \'ForgotPassword\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

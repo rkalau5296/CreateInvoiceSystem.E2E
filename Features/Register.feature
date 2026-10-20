@@ -1,4 +1,4 @@
-Feature: Register
+﻿Feature: Register
   As a new user
   I want to see proper validation on the registration form
   So that I know what data is required
@@ -9,7 +9,7 @@ Background:
 Scenario: Validation when submitting empty registration form
 	When I click the Register button without filling any fields
 	Then all required fields should show validation errors
-	And a global validation alert should be displayed
+	And a global validation alert should be displayed 'RegisterFeature'
 
 Scenario: Validation when entering invalid email
 	When I enter 'invalid-email' into the Email field

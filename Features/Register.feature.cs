@@ -148,7 +148,7 @@ await this.FeatureBackgroundAsync();
  await testRunner.ThenAsync("all required fields should show validation errors", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 12
- await testRunner.AndAsync("a global validation alert should be displayed", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+ await testRunner.AndAsync("a global validation alert should be displayed \'RegisterFeature\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
