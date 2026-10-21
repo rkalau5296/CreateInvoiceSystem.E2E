@@ -214,22 +214,22 @@ namespace CreateInvoiceSystem.E2E.Features
         await testRunner.AndAsync("The user clicks the \'Save\' button", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 24
-        await testRunner.ThenAsync("Validation message \'Musisz podać nazwę klienta\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+        await testRunner.ThenAsync("Validation message \'Pole jest wymagane\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 25
-        await testRunner.AndAsync("Validation message \'NIP jest obowiązkowy\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+        await testRunner.AndAsync("Validation message \'NIP musi składać się z 10 cyfr\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 26
-        await testRunner.AndAsync("Validation message \'Ulica jest wymagana\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+        await testRunner.AndAsync("Validation message \'Pole jest wymagane\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 27
-        await testRunner.AndAsync("Validation message \'Numer domu/lokalu jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+        await testRunner.AndAsync("Validation message \'Pole jest wymagane\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 28
-        await testRunner.AndAsync("Validation message \'Kod pocztowy jest wymagany\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+        await testRunner.AndAsync("Validation message \'Kod pocztowy ma format XX-XXX\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
 #line 29
-        await testRunner.AndAsync("Validation message \'Miasto jest wymagane\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+        await testRunner.AndAsync("Validation message \'Pole jest wymagane\' should be visible", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

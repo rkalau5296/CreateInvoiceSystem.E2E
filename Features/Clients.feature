@@ -21,12 +21,12 @@
     Scenario: Verify mandatory field validations
         When The user clicks the 'Add client' button
         And The user clicks the 'Save' button
-        Then Validation message 'Musisz podać nazwę klienta' should be visible
-        And Validation message 'NIP jest obowiązkowy' should be visible
-        And Validation message 'Ulica jest wymagana' should be visible
-        And Validation message 'Numer domu/lokalu jest wymagany' should be visible
-        And Validation message 'Kod pocztowy jest wymagany' should be visible
-        And Validation message 'Miasto jest wymagane' should be visible
+        Then Validation message 'Pole jest wymagane' should be visible
+        And Validation message 'NIP musi składać się z 10 cyfr' should be visible
+        And Validation message 'Pole jest wymagane' should be visible
+        And Validation message 'Pole jest wymagane' should be visible
+        And Validation message 'Kod pocztowy ma format XX-XXX' should be visible
+        And Validation message 'Pole jest wymagane' should be visible
 
     @clients
     Scenario: Update newly added client information and cleanup

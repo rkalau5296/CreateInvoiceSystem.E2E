@@ -17,13 +17,13 @@ public class ClientsPage(IPage page)
     private ILocator SaveBtn => _page.GetByRole(AriaRole.Button, new() { Name = "Zapisz" });
     public ILocator ClientsNavLink => _page.GetByRole(AriaRole.Link, new() { Name = "👥 Klienci" });
     public ILocator DeleteClient => _page.GetByRole(AriaRole.Button, new() { Name = "Usuń" });
-    private ILocator InputFirmName => _page.Locator("label:has-text('Nazwa firmy') + div input");
-    private ILocator InputNIP => _page.Locator("label:has-text('NIP') + div input");
-    private ILocator InputEmail => _page.Locator("label:has-text('E-mail') + div input");
-    private ILocator InputStreet => _page.Locator("label:has-text('Ulica') + div input");
-    private ILocator InputNumber => _page.Locator("label:has-text('Numer') + div input");
-    private ILocator InputZipCode => _page.Locator("label:has-text('Kod pocztowy') + div input");
-    private ILocator InputCity => _page.Locator("label:has-text('Miasto') + div input");
+    private ILocator InputFirmName => _page.Locator("label:has-text('Nazwa firmy ') + input");
+    private ILocator InputNIP => _page.Locator("label:has-text('NIP') + input");
+    private ILocator InputEmail => _page.Locator("label:has-text('E-mail') + input");
+    private ILocator InputStreet => _page.Locator("label:has-text('Ulica') + input");
+    private ILocator InputNumber => _page.Locator("label:has-text('Numer') + input");
+    private ILocator InputZipCode => _page.Locator("label:has-text('Kod pocztowy') + input");
+    private ILocator InputCity => _page.Locator("label:has-text('Miasto') + input");
 
     public async Task NavigateAsync(string baseUrl) => await _page.GotoAsync($"{baseUrl}/clients");
     public async Task GotoClientsAsync() => await ClientsNavLink.ClickAsync();    
