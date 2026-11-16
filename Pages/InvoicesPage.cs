@@ -10,7 +10,7 @@ namespace CreateInvoiceSystem.E2E.Pages
     {
         private ILocator SearchInput => page.Locator("input[placeholder*='Numer faktury']");
         private ILocator TableRows => page.Locator("table tbody tr");
-        public ILocator InvoicesNavLink => page.GetByRole(AriaRole.Link, new() { NameRegex = Helper.ToSafeRegex("Faktury") });
+        public ILocator InvoicesNavLink => page.GetByRole(AriaRole.Link, new() { NameRegex = Helper.ToSafeRegex("Faktury$") });
         private ILocator InputTitle => page.Locator("label:has-text('Tytuł faktury') + input");
         private ILocator PaymentMethod => page.Locator("label:has-text('Metoda płatności') + select");
         private ILocator InputClientName => page.Locator("label:has-text('Wybierz klienta lub wpisz nową nazwę') + input");
